@@ -16,6 +16,7 @@ CREATE TABLE TempData
 	Hire_Date Date NOT NULL,
 	Sale_Quota money NOT NULL
 )
+--Insert Data into the temp table with a SELECT Table
 INSERT INTO TempData
 
 SELECT        C.JobTitle As Job_Title,  B.FirstName + ' ' + B.LastName AS FullName, C.HireDate As Hire_Date, A.SalesQuota As Sale_Quota
@@ -24,6 +25,7 @@ FROM            Sales.SalesPerson As A INNER JOIN
                          HumanResources.Employee AS C ON A.BusinessEntityID = C.BusinessEntityID
 		WHERE C.HireDate IS NOT NULL AND A.SalesQuota IS NOT NULL;
 
+--Performed a SELECT Statement to Display the data within the Temp table
 --SET STATISTIC IO ON;;
 WITH DResult (Job_Title, FullName, Hire_Date, Sale_Quota)
 	As (--display to affected rows
